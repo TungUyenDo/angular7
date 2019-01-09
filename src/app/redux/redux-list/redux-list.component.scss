@@ -1,0 +1,16 @@
+.redux-list {
+    text-align: center;
+    margin-bottom: 30px;
+    ul {
+        list-style: none;
+        span {
+            padding: 0 5px
+        }
+    }
+    .table {
+        max-width: 500px;
+        margin: 0 auto;
+        margin-bottom: 30px;
+        border: 1px solid #32383e
+    }
+}

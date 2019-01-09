@@ -1,0 +1,8 @@
+<div class="movie-ele-detail">
+	<h2>Todo Detail</h2>
+	<label *ngIf="movie">
+		<span>Name:</span>
+		<input disabled type="text" name="{{movie.name}}" [ngModel]="movie.name" class="form-control" style="margin-bottom:5px">
+		<a routerLink="/todo-info-detail/{{movie.id}}" class="btn btn-primary">View Detail</a>
+	</label>
+</div>

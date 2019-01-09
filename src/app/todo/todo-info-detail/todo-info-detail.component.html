@@ -1,0 +1,30 @@
+<div class="todo_info_detail">
+	<div class="content-detail" *ngIf="info_detail">
+		<div class="number">
+			{{info_detail.id}}
+		</div>
+		
+		<div class="name-detail">
+			<input disabled type="text" [(ngModel)]="info_detail.name" value="{{info_detail.name}}">
+		</div>
+	</div>
+
+	<div class="content-action">
+		<button (click)="del_Info(info_detail)" class="action-style btn btn-danger">Delete</button>
+		<button *ngIf="!status" (click)="edit_Info(info_detail)" class="action-style btn btn-success">Edit</button>
+		<button *ngIf="status" (click)="save_Info(info_detail)" class="action-style btn btn-success">Save</button>
+	</div>
+	
+</div>
+<div class="row">
+	<div class="col-md-6">
+		<div class="todo-list">
+			<ol>
+				<li *ngFor="let item of list_movie"  style="cursor:pointer" [class.selectedMovie]="item == currentMovie">
+					<span>{{item.id}}</span>
+					{{item.name}}
+				</li>
+			</ol>
+		</div>
+	</div>
+</div>

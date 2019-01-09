@@ -1,0 +1,21 @@
+<!-- <app-introduce></app-introduce> -->
+
+<div class="row">
+	<div class="col-md-6">
+		<div class="todo-list">
+			<ol>
+				<li *ngFor="let item of movies" (click)="onClickMovie(item)" style="cursor:pointer" [class.selectedMovie]="item == currentMovie">
+					<span>{{item.id}}</span>
+					{{item.name}}
+				</li>
+			</ol>
+		</div>
+	</div>
+	<div class="col-md-6">
+		<app-todo-detail [movie]="currentMovie"></app-todo-detail>
+	</div>
+</div>
+
+
+
+
