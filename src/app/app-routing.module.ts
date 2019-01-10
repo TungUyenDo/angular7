@@ -7,6 +7,7 @@ import { ReduxListComponent } from "./redux/redux-list/redux-list.component";
 import { TodoComponent } from "./todo/todo.component";
 import { AppComponent } from "./app.component";
 
+
 const routes: Routes = [
   { path: 'todo-list', component: TodoListComponent },
   { path: 'redux-list', component: ReduxListComponent },

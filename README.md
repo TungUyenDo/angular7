@@ -30,3 +30,9 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 #json server
 https://www.npmjs.com/package/json-server
+- install : npm install -g json-server
+- run : json-server --watch db.json
+
+
+#ngrx store and effect
+- Link : https://medium.com/@dazcyril/resolving-data-in-angular-2-4-and-5-refactoring-components-and-moving-to-ngrx-store-15e15d8be3dd

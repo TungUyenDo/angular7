@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Routes, RouterModule, ActivatedRoute, Router } from '@angular/router';
 import { AppService } from "../../app.service";
+import { Store } from "@ngrx/store";
 import * as $ from 'jquery';
 
 @Component({
@@ -18,8 +19,17 @@ export class TodoInfoDetailComponent implements OnInit {
 
 	getAMovie : any;
 
+	resStore : any;
 	
-	constructor(private route: ActivatedRoute, private appService: AppService, private router: Router) { }
+	constructor(private route: ActivatedRoute, 
+				private appService: AppService, 
+				private router: Router,
+				private store : Store<any>
+	) { 
+		this.store.subscribe(store => {
+			this.resStore = store
+		})
+	}
 
 	ngOnInit() {
 		this.getInfoDetailTakeFromServerByID();

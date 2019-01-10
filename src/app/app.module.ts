@@ -2,6 +2,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { EffectsModule } from '@ngrx/effects';
 
 
 
@@ -22,6 +23,7 @@ import { reducers } from './app.reducers';
 import { ReduxAddComponent } from './redux/redux-add/redux-add.component';
 import { ReduxListComponent } from './redux/redux-list/redux-list.component';
 import { TodoActions } from '../app/redux/redux.actions';
+import { AppEffects } from './app.effect';
 
 @NgModule({
   declarations: [
@@ -41,7 +43,8 @@ import { TodoActions } from '../app/redux/redux.actions';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    StoreModule.forRoot(reducers)
+    StoreModule.forRoot(reducers),
+    // EffectsModule.forRoot([AppEffects])
   ],
   providers: [
     AppService,

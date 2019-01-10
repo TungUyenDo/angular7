@@ -62,6 +62,22 @@ export class AppService {
 	
 
 
+	/* Add a movie  */
+	AddAMovie(item: any): Observable<any> {
+		
+		let headers = new HttpHeaders({
+			'Cache-Control': 'no-cache',
+			'Accept': 'application/json'
+		});
+
+		return this.http.post(this.url_server, item, {headers: headers}).pipe(
+			map(data => {
+				return data;
+			}),
+			catchError(this.handleError)
+		);
+		
+	};
 	/* Edit a movie  */
 	EditAMovie(item: any): Observable<any> {
 		const httpOptions = {
