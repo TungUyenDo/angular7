@@ -67,7 +67,7 @@ export class AppService {
 		
 		let headers = new HttpHeaders({
 			'Cache-Control': 'no-cache',
-			'Accept': 'application/json'
+			'Accept': 'application/json',
 		});
 
 		return this.http.post(this.url_server, item, {headers: headers}).pipe(

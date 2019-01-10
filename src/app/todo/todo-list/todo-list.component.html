@@ -1,5 +1,16 @@
 <!-- <app-introduce></app-introduce> -->
-
+<div class="row">
+	<div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+		<div class="todo-add">
+			<div class="input-group mb-3" style="padding:.5em">
+				<input [(ngModel)]="nameTodo" class="form-control input-name" type="text" class="form-control" placeholder="Name...">
+				<div class="input-group-append">
+					<button class="btn btn-success" (click)="actionAddTodo(nameTodo)">ADD</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 <div class="row">
 	<div class="col-md-6">
 		<div class="todo-list">
@@ -15,7 +26,4 @@
 		<app-todo-detail [movie]="currentMovie"></app-todo-detail>
 	</div>
 </div>
-
-
-
 

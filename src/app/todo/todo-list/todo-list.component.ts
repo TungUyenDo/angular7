@@ -28,12 +28,6 @@ export class TodoListComponent implements OnInit {
 			 return this.dataFromStore = data
 		})
 
-		// console.log(res)
-		console.log(this.store)
-
-		// this.dataFromStore = this.store.select('reduxReducer')
-		// console.log(this.dataFromStore);
-		// return this.dataFromStore
 	}
 
 	ngOnInit() {
@@ -63,12 +57,26 @@ export class TodoListComponent implements OnInit {
 	getDatatMovieByJson() {
 		this.appService.getListMovieByJson().subscribe(data => {
 			this.movies = data;
-
+			console.log(this.movies)
 			if (this.dataFromStore.length > 0){
 				this.dataFromStore.forEach(element => {
 					this.movies.push(element)
 				});
 			}
+		})
+	}
+
+	i_todo : object;
+	nameTodo : any;
+
+	actionAddTodo(name:any){
+		console.log(name);
+		const item = {
+			id : new Date().getTime(),
+			name : name
+		}
+		this.appService.AddAMovie(item).subscribe(res => {
+			console.log(res)
 		})
 	}
 
