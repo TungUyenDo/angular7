@@ -80,4 +80,13 @@ export class TodoListComponent implements OnInit {
 		})
 	}
 
+	del_aFilm(item:any){
+		if(confirm('Bạn có chắc muốn xóa thằng này?')){
+			this.appService.DelAMovie(item).subscribe(res => {
+				console.log(res)
+			})
+		}else{}
+		
+	}
+
 }

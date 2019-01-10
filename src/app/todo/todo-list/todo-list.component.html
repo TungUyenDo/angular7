@@ -18,6 +18,12 @@
 				<li *ngFor="let item of movies" (click)="onClickMovie(item)" style="cursor:pointer" [class.selectedMovie]="item == currentMovie">
 					<span>{{item.id}}</span>
 					{{item.name}}
+					<i (click)="del_aFilm(item)" style="
+						position: absolute;
+						right: 10px;
+						top: 50%;
+						transform: translateY(-50%);
+					" class="fa fa-trash" aria-hidden="true"></i>
 				</li>
 			</ol>
 		</div>
