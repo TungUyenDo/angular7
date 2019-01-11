@@ -1,10 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { AppService } from './../../app.service';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Store } from "@ngrx/store";
 import { TodoActions } from "../redux.actions";
 
-
 import * as $ from 'jquery';
-
 
 @Component({
 	selector: 'app-redux-add',
@@ -13,19 +12,30 @@ import * as $ from 'jquery';
 })
 export class ReduxAddComponent implements OnInit {
 
-	constructor(private store : Store<any>, private todoActions : TodoActions ) { }
+	dataStore : any
+
+	constructor(private store: Store<any>, 
+				private todoActions: TodoActions) {}
 
 
-	name : any
+	// @Output() movie = new EventEmitter<any>();
 
-	ngOnInit() {
+	item = {
+		id: 0,
+		name: ''
 	}
-	actionAddMovie(movie){
-		$('.input-name').attr('disabled',true)
-		
-		this.store.dispatch(this.todoActions.addTodo(this.name));
-		this.name = ''
+	message : any;
 
+	ngOnInit() {}
+
+
+	action_AddMovie() {
+		this.item.id = new Date().getTime();
+		if(!this.item.name){
+			this.message = 'Vui lòng nhập đầy đủ nha!!!!'
+		}else{
+			this.message = '';
+			this.store.dispatch(this.todoActions.addTodo(this.item));
+		}
 	}
-
 }

@@ -1,33 +1,36 @@
-// import { TodoActions } from './redux/redux.actions';
-// import { AppService } from './app.service';
-// import { Injectable  } from '@angular/core';
-// import { Actions, Effect } from '@ngrx/effects';
-// import { Observable } from 'rxjs'
-// import { Action } from "@ngrx/store";
-// import 'rxjs';
-// import 'rxjs/add/operator/map';
-// import 'rxjs/add/operator/catch';
-// import { switchMap } from 'rxjs/operators';  
+import { catchError } from 'rxjs/operators';
+
+import { TodoActions } from './redux/redux.actions';
+import { AppService } from './app.service';
+import { Injectable  } from '@angular/core';
+import { Actions, Effect, ofType} from '@ngrx/effects';
+import { Action } from '@ngrx/store';
+
+import 'rxjs';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
+import { throwError, Observable } from 'rxjs';
+import { switchMap, map} from 'rxjs/operators'
+ 
+
+@Injectable()
+export class AppEffects {
+    constructor(
+        private actions$: Actions,
+        private AppService: AppService,        
+    ) { }
 
 
-// @Injectable()
-// export class AppEffects {
-//     constructor(
-//         private actions$: Actions,
-//         private AppService: AppService,
-//         // private TodoActions: TodoActions,
-        
-//     ) { }
+    @Effect() addTodoEffect$ = this.actions$.pipe(
+        ofType(TodoActions.ADD),
+        switchMap(query => this.AppService.AddAMovieEffect(query)),
+        map((data: any) => {
+            return {
+                type: 'addTodo',
+            }
+        }),
+        catchError(errors => throwError(errors))
+    )
 
-
-//     // @Effect() addMovie$ = this.actions$
-//     //     .ofType(TodoActions.ADD)
-//     //     .switchMap( (query) =>
-//     //     this.AppService.AddAMovie(query)
-//     //         .map((data: any) => {
-//     //             return data
-//     //         })
-//     //         .catch(errors => 'error')
-//     //     );
-
-// }
+    
+}

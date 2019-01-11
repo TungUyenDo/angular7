@@ -17,10 +17,10 @@ export class TodoActions {
             payload: id
         }
     };
-    deleteTodo(id : any){
+    deleteTodo(item : any){
         return{
             type:TodoActions.DELETE,
-            payload: id
+            payload: item
         }
     }
 }

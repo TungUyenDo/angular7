@@ -18,17 +18,12 @@ export class TodoInfoDetailComponent implements OnInit {
 	id : any = +this.route.snapshot.paramMap.get('id');
 
 	getAMovie : any;
-
-	resStore : any;
 	
 	constructor(private route: ActivatedRoute, 
 				private appService: AppService, 
 				private router: Router,
-				private store : Store<any>
 	) { 
-		this.store.subscribe(store => {
-			this.resStore = store
-		})
+		
 	}
 
 	ngOnInit() {

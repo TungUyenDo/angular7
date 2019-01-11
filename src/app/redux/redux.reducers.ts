@@ -5,22 +5,24 @@ export const initialState = [];
 
 export function counterReducer(state:any = initialState, {type,payload}:any) {
     switch (type) {
+        
         case TodoActions.ADD:
             state = [
                 ...state,{
-                    id: new Date().getTime(),
-                    name: payload
+                    item : payload
             }]
             return state;
 
         case TodoActions.UPDATE:
-            state = {
-
-            }
+            state = {}
             return state;
 
         case TodoActions.DELETE:
-            return 0;
+            state = [
+                ...state, {
+                    item: payload
+                }]
+            return state;
 
         default:
             return state;

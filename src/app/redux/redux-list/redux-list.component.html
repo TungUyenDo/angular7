@@ -1,10 +1,11 @@
 <div class="redux-list">
 	
-	<table class="table" *ngIf="dataReduxReducer.length > 0">
+	<table class="table">
 		<thead  class="thead-dark">
 			<tr>
 				<th>ID</th>
 				<th>NAME</th>
+				<th>ACTIONS</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -15,14 +16,19 @@
 				<td>
 					{{item.name}}
 				</td>
+				<td>
+					<button (click)="del_by_AMovie(item)" class="btn btn-danger">Delete</button>
+				</td>
 			</tr>
-		</tbody>
-		
+			<tr *ngIf="dataReduxReducer == 0">
+				<td colspan="3">
+					<p  style="text-align:center"><i>Data Empty</i></p>
+				</td>
+			</tr>
+		</tbody>		
 	</table>
-	<p *ngIf="dataReduxReducer.length == 0" style="text-align:center"><i>Data Empty</i></p>
-
-	<button class="btn btn-success" (click)='onClickAdd()'>Add New Movie</button>
-
+	<button class="btn btn-danger" (click)="del_all(dataReduxReducer)">Delete All</button>
 </div>
 
-<app-redux-add *ngIf="statusAdd"></app-redux-add>
+<app-redux-add></app-redux-add>
+

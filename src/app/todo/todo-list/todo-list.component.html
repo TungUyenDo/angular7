@@ -1,35 +1,41 @@
 <!-- <app-introduce></app-introduce> -->
+
+<!-- add a movie from server -->
 <div class="row">
-	<div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+	<div class="col-md-6 col-sm-6 col-xs-12">
 		<div class="todo-add">
-			<div class="input-group mb-3" style="padding:.5em">
+			<i style="color:red">{{message}}</i>
+			<div class="input-group" style="padding:.5em">
 				<input [(ngModel)]="nameTodo" class="form-control input-name" type="text" class="form-control" placeholder="Name...">
 				<div class="input-group-append">
-					<button class="btn btn-success" (click)="actionAddTodo(nameTodo)">ADD</button>
+					<button class="btn btn-success" (click)="actionAddTodo()">ADD</button>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
-<div class="row">
+
+<p style="text-align: center"><i [hidden]="movies != 0">Data Empty</i></p>
+
+<div class="row" [hidden]="movies == 0">
 	<div class="col-md-6">
 		<div class="todo-list">
 			<ol>
 				<li *ngFor="let item of movies" (click)="onClickMovie(item)" style="cursor:pointer" [class.selectedMovie]="item == currentMovie">
-					<span>{{item.id}}</span>
-					{{item.name}}
-					<i (click)="del_aFilm(item)" style="
-						position: absolute;
-						right: 10px;
-						top: 50%;
-						transform: translateY(-50%);
-					" class="fa fa-trash" aria-hidden="true"></i>
+					<span class="id">{{item.id}}</span>
+					<span class="name">{{item.name}}</span>
+					<i (click)="del_aFilm(item)" class="fa fa-trash" aria-hidden="true"></i>
 				</li>
 			</ol>
 		</div>
+		<button (click)="del_All(movies)" class="btn btn-danger">Delete All</button>
 	</div>
 	<div class="col-md-6">
 		<app-todo-detail [movie]="currentMovie"></app-todo-detail>
 	</div>
 </div>
-
+<br>
+<br>
+<br>
+<br>
+<br>

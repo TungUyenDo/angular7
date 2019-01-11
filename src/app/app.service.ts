@@ -62,22 +62,34 @@ export class AppService {
 	
 
 
-	/* Add a movie  */
-	AddAMovie(item: any): Observable<any> {
+	/* Add a movie Effect */
+	AddAMovieEffect(item: any): Observable<any> {
 		
 		let headers = new HttpHeaders({
 			'Cache-Control': 'no-cache',
 			'Accept': 'application/json',
 		});
-
-		return this.http.post(this.url_server, item, {headers: headers}).pipe(
-			map(data => {
-				return data;
-			}),
+		return this.http.post(this.url_server, item.payload, {headers: headers}).pipe(
+			map(data => data),
 			catchError(this.handleError)
 		);
 		
 	};
+	/* Add a movie normal */
+	AddAMoviNormal(item: any): Observable<any> {
+		
+		let headers = new HttpHeaders({
+			'Cache-Control': 'no-cache',
+			'Accept': 'application/json',
+		});
+		return this.http.post(this.url_server, item, {headers: headers}).pipe(
+			map(data => data),
+			catchError(this.handleError)
+		);
+		
+	};
+
+
 	/* Edit a movie  */
 	EditAMovie(item: any): Observable<any> {
 		const httpOptions = {
@@ -104,8 +116,34 @@ export class AppService {
 
 		return this.http.delete(this.url_server + item.id, item).pipe(
 			map(data => {
-				return true;
 				console.log('Delete successful');
+				return data;
+				
+			}),
+			catchError(this.handleError)
+		);
+	};
+
+
+	/* Del a movie  */
+	// DelAMovie_Redux(item: any): Observable<any> {
+	// 	console.log(item)
+	// 	return this.http.delete(this.url_server + item.payload.id, item.payload).pipe(
+	// 		map(data => {
+	// 			console.log('Delete successful');
+	// 			return data;
+				
+	// 		}),
+	// 		catchError(this.handleError)
+	// 	);
+	// };
+
+	/* Del all movie  */
+	DelAllMovie(item:any): Observable<any> {
+		return this.http.delete(this.url_server + item.id, item).pipe(
+			map(data => {
+				console.log(data)
+				return data;
 			}),
 			catchError(this.handleError)
 		);

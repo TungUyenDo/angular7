@@ -4,6 +4,10 @@ import { AppService } from "../../app.service";
 
 
 import { Store } from '@ngrx/store';
+import { TodoActions } from './../../redux/redux.actions';
+
+
+/** THIS PAGE NOT APPLY REDUX AND EFFECT*/
 
 
 @Component({
@@ -16,17 +20,21 @@ export class TodoListComponent implements OnInit {
 	movies: any;
 	currentMovie: any;
 	dataFromStore : any;
+	message : any;
+	nameTodo : any;
 
 	constructor(private appService: AppService, private store: Store<any>) {
+
+		/** In here Not Use Store ---- 2 way subscribe store */
+
 		// store.subscribe(store => {
 		// 	this.dataFromStore = store.reduxReducer ;
-		// 	console.log(this.dataFromStore);
 		// 	return this.dataFromStore
 		// })
 
-		this.store.select('reduxReducer').subscribe(data => {
-			 return this.dataFromStore = data
-		})
+		// this.store.select('reduxReducer').subscribe(data => {
+		// 	 return this.dataFromStore = data
+		// })
 
 	}
 
@@ -57,36 +65,43 @@ export class TodoListComponent implements OnInit {
 	getDatatMovieByJson() {
 		this.appService.getListMovieByJson().subscribe(data => {
 			this.movies = data;
-			console.log(this.movies)
-			if (this.dataFromStore.length > 0){
-				this.dataFromStore.forEach(element => {
-					this.movies.push(element)
-				});
-			}
+			console.log('Data on Server:',this.movies)
+
+			/** Nếu không dùng effect thì mỗi lần add new item thì push nó vào Data trả về */
+			// if (this.dataFromStore.length > 0){
+			// 	this.dataFromStore.forEach(element => {
+			// 		this.movies.push(element)
+			// 	});
+			// }
 		})
 	}
 
-	i_todo : object;
-	nameTodo : any;
 
-	actionAddTodo(name:any){
-		console.log(name);
+	actionAddTodo(){
 		const item = {
 			id : new Date().getTime(),
-			name : name
+			name: this.nameTodo
 		}
-		this.appService.AddAMovie(item).subscribe(res => {
-			console.log(res)
-		})
+		if (!this.nameTodo) {
+			this.message = 'Vui lòng nhập đầy đủ nha!!!!'
+		} else {
+			this.message = '';
+			this.appService.AddAMoviNormal(item).subscribe(res => res)
+		}
+		
 	}
 
 	del_aFilm(item:any){
+
 		if(confirm('Bạn có chắc muốn xóa thằng này?')){
-			this.appService.DelAMovie(item).subscribe(res => {
-				console.log(res)
-			})
+			this.appService.DelAMovie(item).subscribe(res => res)
 		}else{}
 		
+	}
+	del_All(item:any){
+		item.forEach(element => {
+			this.appService.DelAllMovie(element).subscribe(res => res)
+		});
 	}
 
 }
