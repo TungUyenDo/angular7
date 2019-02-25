@@ -13,6 +13,8 @@ import { TodoDetailComponent } from './todo/todo-detail/todo-detail.component';
 import { IntroduceComponent } from './introduce/introduce.component';
 import { TodoListComponent } from './todo/todo-list/todo-list.component';
 import { AppService  } from './app.service';
+import { UserService  } from './core/services/user.service';
+import { CountryService  } from './core/services/country.service';
 import { TodoInfoDetailComponent } from './todo/todo-info-detail/todo-info-detail.component';
 import { MenuComponent } from './menu/menu.component';
 import { ReduxComponent } from './redux/redux.component';
@@ -56,6 +58,8 @@ import { MainComponent } from './main/main.component';
   ],
   providers: [
     AppService,
+    UserService,
+    CountryService,
     TodoActions
   ],
   bootstrap: [AppComponent]
