@@ -10,13 +10,19 @@ import { map, filter, catchError, mergeMap, tap } from 'rxjs/operators';
 })
 export class AppService {
 
-	constructor(private http: HttpClient
-		
-	){}
+	
 
 	url : any = '../assets/data/todo.data.json';
 	url_server = 'http://localhost:3000/list/';
+	test = '';
+
+
 	dataSubcribes :any;
+
+	constructor(private http: HttpClient
+	) {
+		
+	}
 
 	/* Call data normal */
 	getListMovieNormal () {

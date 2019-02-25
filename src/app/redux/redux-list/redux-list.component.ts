@@ -23,7 +23,7 @@ export class ReduxListComponent implements OnInit {
 	ngOnInit() {
 		this.AppService.getListMovieByJson().subscribe(res => {
 			this.dataReduxReducer = res;
-			console.log(this.dataReduxReducer)
+			// console.log(this.dataReduxReducer)
 		})
 	}
 

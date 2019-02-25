@@ -65,7 +65,7 @@ export class TodoListComponent implements OnInit {
 	getDatatMovieByJson() {
 		this.appService.getListMovieByJson().subscribe(data => {
 			this.movies = data;
-			console.log('Data on Server:',this.movies)
+			// console.log('Data on Server:',this.movies)
 
 			/** Nếu không dùng effect thì mỗi lần add new item thì push nó vào Data trả về */
 			// if (this.dataFromStore.length > 0){
