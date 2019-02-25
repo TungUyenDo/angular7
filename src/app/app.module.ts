@@ -24,6 +24,9 @@ import { ReduxAddComponent } from './redux/redux-add/redux-add.component';
 import { ReduxListComponent } from './redux/redux-list/redux-list.component';
 import { TodoActions } from '../app/redux/redux.actions';
 import { AppEffects } from './app.effect';
+import { OopComponent } from './oop/oop.component';
+import { ListComponent } from './oop/list/list.component';
+import { DetailComponent } from './oop/detail/detail.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +40,9 @@ import { AppEffects } from './app.effect';
     ReduxComponent,
     ReduxAddComponent,
     ReduxListComponent,
+    OopComponent,
+    ListComponent,
+    DetailComponent,
   ],
   imports: [
     BrowserModule,

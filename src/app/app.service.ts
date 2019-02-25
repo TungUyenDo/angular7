@@ -15,7 +15,7 @@ export class AppService {
 	){}
 
 	url : any = '../assets/data/todo.data.json';
-	url_server = 'http://localhost:3000/man/';
+	url_server = 'http://localhost:3000/list/';
 	dataSubcribes :any;
 
 	/* Call data normal */
